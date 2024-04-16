@@ -11,7 +11,7 @@ function M.get()
     CursorColumn = { link = "CursorLine" }, -- Screen-column at the cursor
     Directory = { fg = C.blue }, -- directory names (and other special names in listings)
     EndOfBuffer = { fg = C.base }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
-    ErrorMsg = { fg = C.red, bold = true }, -- error messages on the command line
+    ErrorMsg = { fg = C.bittersweet, bold = true }, -- error messages on the command line
     VertSplit = { fg = C.sand }, -- the column separating vertically split windows
     Folded = { fg = C.blue, bg = C.surface1 }, -- line used for closed folds
     FoldColumn = { fg = C.overlay0 }, -- 'foldcolumn'
@@ -60,6 +60,12 @@ function M.get()
     -- SpellCap
     -- SpellLocal
     -- SpellRare
+
+    -- Diagnostics ──────────────────────────────────────────────────────────────────────
+    DiagnosticError = { link = "ErrorMsg" },
+    DiagnosticWarn = { link = "WarningMsg" },
+    DiagnosticInfo = { fg = C.light_blue },
+    DiagnosticHint = { fg = C.platinum },
   }
 end
 

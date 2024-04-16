@@ -113,7 +113,7 @@ function M.get()
     -- │ Language specifics                                                         │
     -- ╰─────────────────────────────────────────────────────────╯
     -- Bash ──────────────────────────────────────────────────────────────────────
-    ["@function.builtin.bash"] = { fg = C.bittersweet },
+    ["@function.builtin.bash"] = { fg = C.pink, bold = true },
 
     -- Markdown ──────────────────────────────────────────────────────────────────────
     ["@markup.heading.1.markdown"] = { link = "rainbow1" },
