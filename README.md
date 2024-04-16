@@ -234,6 +234,11 @@ which_key = true
 </tr>
 </table>
 
+## Other themes
+
+- [MountNugget.tmux](https://github.com/dlvandenberg/mountnugget.tmux)
+- [MountNugget.terminal](https://github.com/dlvandenberg/mountnugget.terminal)
+
 ## Credits
 
 The setup of this theme is heavily inspired by the following themes:
