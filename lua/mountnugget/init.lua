@@ -35,7 +35,7 @@ MountNugget.load = function()
 
   -- Load colorgroups ──────────────────────────────────────────────────────────────────────
   local groups = require("mountnugget.groups").apply()
-  local table = vim.tbl_deep_extend("keep", groups.editor, groups.syntax, groups.integrations);
+  local table = vim.tbl_deep_extend("keep", groups.editor, groups.syntax, groups.integrations)
 
   -- Add highlights ──────────────────────────────────────────────────────────────────────
   for group, settings in pairs(table) do

@@ -1,4 +1,3 @@
-
 -- ╭─────────────────────────────────────────────────────────╮
 -- │ Color Palette                                           │
 -- ╰─────────────────────────────────────────────────────────╯
@@ -64,7 +63,7 @@ local palette = {
   white_50 = "#B0B0B0",
   white_60 = "#979797",
   white_70 = "#F6F6F4",
-  
+
   silver_10 = "#DBD9D2",
   silver_20 = "#D2CFC6",
 
@@ -80,7 +79,7 @@ local palette = {
   -- Red ───────────────────────────────────────────────────────────────────────
   red_10 = "#EA6F6F",
   red_20 = "#E85D5D",
-  red_30 = "#FE5F55",  -- TODO lighten / darken others
+  red_30 = "#FE5F55", -- TODO lighten / darken others
   red_40 = "#E13030",
   red_50 = "#D41F1F",
   red_60 = "#BA1B1B",

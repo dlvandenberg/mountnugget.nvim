@@ -20,7 +20,7 @@ colors.get_colors = function()
 
     slope = P.purple_80, -- mantle
     peak = P.purple_90, -- crust
- 
+
     surface0 = P.purple_60,
     surface1 = P.purple_50,
     surface2 = P.purple_40,

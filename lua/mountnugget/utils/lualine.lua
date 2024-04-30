@@ -42,5 +42,3 @@ return function()
 
   return mountnugget
 end
-
-

@@ -17,7 +17,7 @@ function M.get()
     MasonHighlight = { fg = C.vanilla },
     MasonHighlightBlock = {
       bg = C.vanilla,
-      fg = C.base
+      fg = C.base,
     },
     MasonHighlightBlockBold = { bg = secondary_bg, fg = secondary_fg, bold = true },
     MasonHighlightSecondary = { fg = C.eggplant },

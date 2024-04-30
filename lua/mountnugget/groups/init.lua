@@ -3,24 +3,24 @@ local M = {}
 function M.apply()
   local _O, _C = O, C
 
-  O = require('mountnugget').config
-  C = require('mountnugget.colors').get_colors()
+  O = require("mountnugget").config
+  C = require("mountnugget.colors").get_colors()
 
   -- ╭─────────────────────────────────────────────────────────╮
   -- │ Setup theme                                             │
   -- ╰─────────────────────────────────────────────────────────╯
   local theme = {}
 
-  theme.editor = require('mountnugget.groups.editor').get();
-  theme.syntax = require('mountnugget.groups.syntax').get();
-  theme.terminal = require('mountnugget.groups.terminal').get();
+  theme.editor = require("mountnugget.groups.editor").get()
+  theme.syntax = require("mountnugget.groups.syntax").get()
+  theme.terminal = require("mountnugget.groups.terminal").get()
 
   local final_integrations = {}
 
   -- Integrations ──────────────────────────────────────────────────────────────────────
   for integration in pairs(O.integrations) do
     local integrate = false
-    if type(O.integrations[integration]) == 'table' then
+    if type(O.integrations[integration]) == "table" then
       if O.integrations[integration].enabled == true then
         integrate = true
       end

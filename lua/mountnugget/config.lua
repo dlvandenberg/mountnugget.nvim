@@ -25,7 +25,7 @@
 local default_config = {
   overrides = {},
   palette_overrides = {},
-  integrations = {}
+  integrations = {},
 }
 
 return default_config

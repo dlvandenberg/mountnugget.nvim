@@ -10,7 +10,6 @@ function M.get()
     WhichKeyDesc = { fg = C.vanilla },
     WhichKeyValue = { fg = C.overlay0 },
   }
-
 end
 
 return M

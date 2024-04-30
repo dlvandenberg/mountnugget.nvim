@@ -8,7 +8,6 @@ function M.get()
     DapLogPoint = { fg = C.platinum },
     DapStopped = { fg = C.persian },
   }
-
 end
 
 return M

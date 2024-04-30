@@ -17,7 +17,7 @@ function M.get()
     FoldColumn = { fg = C.overlay0 }, -- 'foldcolumn'
     SignColumn = { fg = C.surface1 }, -- column where |signs| are displayed
     SignColumnSB = { bg = C.slope, fg = C.surface1 }, -- column where |signs| are displayed
-    Substitute = { bg = C.surface1, fg = C.gold1 } , -- |:substitute| replacement text highlighting
+    Substitute = { bg = C.surface1, fg = C.gold1 }, -- |:substitute| replacement text highlighting
     LineNr = { fg = C.sand }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr = { fg = C.ash_grey }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen = { fg = C.gold, bg = C.overlay1, bold = true }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -33,7 +33,7 @@ function M.get()
     FloatTitle = { fg = C.subtext }, -- title in floating windows
     Pmenu = { bg = C.peak, fg = C.vanilla }, -- Popup menu: normal item.
     PmenuSel = { bg = C.surface1, fg = C.sand1, bold = true }, -- Popup menu: selected item.
-    PmenuSBar = { bg = C.surface1 },  -- Popup menu: scrollbar.
+    PmenuSBar = { bg = C.surface1 }, -- Popup menu: scrollbar.
     PmenuThumb = { bg = C.overlay0 }, -- Popup menu: Thumb of the scrollbar.
     Question = { fg = C.moonstone }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine = { bg = C.surface1, bold = true }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.

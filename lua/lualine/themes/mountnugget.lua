@@ -1,1 +1,1 @@
-return require "mountnugget.utils.lualine"()
+return require("mountnugget.utils.lualine")()

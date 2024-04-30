@@ -79,7 +79,6 @@ function M.get()
     healthSuccess = { fg = C.asparagus },
     healthWarning = { fg = C.citron },
 
-
     -- rainbow
     rainbow1 = { fg = C.vanilla },
     rainbow2 = { fg = C.light_blue },

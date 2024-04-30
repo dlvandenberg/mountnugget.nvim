@@ -31,7 +31,7 @@ function M.get()
     ["@number.float"] = { link = "Float" }, -- For floats
 
     -- Types ──────────────────────────────────────────────────────────────────────
-    ["@type"] = { link = "Type"}, -- For types
+    ["@type"] = { link = "Type" }, -- For types
     ["@type.builtin"] = { fg = C.light_blue, bold = true }, -- For builtin types
     ["@type.definition"] = { link = "Type" }, -- For type definitions
     ["@type.quantifier"] = { link = "Keyword" }, -- type quantifiers like 'const'
