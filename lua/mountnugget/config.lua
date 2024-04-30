@@ -9,12 +9,13 @@
 ---@field dap boolean?
 ---@field dap_ui boolean?
 ---@field gitsigns boolean?
----@field indent_blankline boolean?
+---@field lazygit boolean?
 ---@field markdown boolean?
 ---@field mason boolean?
 ---@field neotest boolean?
 ---@field nvimtree boolean?
 ---@field telescope boolean?
+---@field treesitter boolean?
 ---@field which_key boolean?
 
 ---@class MountNuggetConfig
