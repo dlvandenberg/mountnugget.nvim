@@ -163,7 +163,7 @@ function M.get()
     -- Angular ──────────────────────────────────────────────────────────────────────
     ["@keyword.conditional.angular"] = { bold = true },
     ["@keyword.repeat.angular"] = { bold = true },
-    ["@punctuation.special.angular"] = { fg = C.text },
+    ["@punctuation.special.angular"] = { link = "Delimiter" },
   }
 end
 
