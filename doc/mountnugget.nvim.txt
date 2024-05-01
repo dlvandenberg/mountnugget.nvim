@@ -1,4 +1,4 @@
-*mountnugget.nvim.txt*      For Neovim >= 0.8.0     Last change: 2024 April 30
+*mountnugget.nvim.txt*       For Neovim >= 0.8.0      Last change: 2024 May 01
 
 ==============================================================================
 Table of Contents                         *mountnugget.nvim-table-of-contents*
