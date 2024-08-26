@@ -1,47 +1,97 @@
 local M = {}
 
-function M.apply()
-  local _O, _C = O, C
+M.plugins = {
+  ["bufferline.nvim"] = "bufferline",
+  ["gitsigns.nvim"] = "gitsigns",
+  ["lazy.nvim"] = "lazy",
+  ["telescope.nvim"] = "telescope",
+  ["render-markdown.nvim"] = "markdown",
+  ["nvim-tree.lua"] = "nvim-tree",
+  ["neotest"] = "neotest",
+  ["nvim-cmp"] = "cmp",
+  ["which-key.nvim"] = "which-key",
+}
 
-  O = require("mountnugget").config
-  C = require("mountnugget.colors").get_colors()
+---@param name string
+---@param colors ColorScheme
+---@param opts mountnugget.Config
+---@return mountnugget.Highlights
+function M.get(name, colors, opts)
+  local module = M.get_group(name)
+  return module.get(colors, opts)
+end
 
-  -- ╭─────────────────────────────────────────────────────────╮
-  -- │ Setup theme                                             │
-  -- ╰─────────────────────────────────────────────────────────╯
-  local theme = {}
+---@param name string
+function M.get_group(name)
+  return require("mountnugget.groups." .. name)
+end
 
-  theme.editor = require("mountnugget.groups.editor").get()
-  theme.syntax = require("mountnugget.groups.syntax").get()
-  theme.terminal = require("mountnugget.groups.terminal").get()
+---@param colors ColorScheme
+---@param opts mountnugget.Config
+function M.setup(colors, opts)
+  -- always on
+  local groups = {
+    base = true,
+    kinds = true,
+    semantic_tokens = true,
+    treesitter = true,
+  }
 
-  local final_integrations = {}
-
-  -- Integrations ──────────────────────────────────────────────────────────────────────
-  for integration in pairs(O.integrations) do
-    local integrate = false
-    if type(O.integrations[integration]) == "table" then
-      if O.integrations[integration].enabled == true then
-        integrate = true
-      end
-    elseif O.integrations[integration] == true then
-      -- what do i do here?
-      integrate = true
+  if opts.plugins.all then
+    -- Enable all plugins
+    for _, group in pairs(M.plugins) do
+      groups[group] = true
     end
+  elseif opts.plugins.auto and package.loaded.lazy then
+    -- Enable plugins based on lazy.nvim
+    local plugins = require("lazy.core.config").plugins
+    for plugin, group in pairs(M.plugins) do
+      if plugins[plugin] then
+        groups[group] = true
+      end
+    end
+    -- TODO: Handle mini.nvim
+  end
 
-    if integrate then
-      final_integrations = vim.tbl_deep_extend(
-        "force",
-        final_integrations,
-        require("mountnugget.groups.integrations." .. integration).get()
-      )
+  -- Manually enable / disable plugins
+  for plugin, group in pairs(M.plugins) do
+    local use = opts.plugins[group]
+    use = use == nil and opts.plugins[plugin] or use
+    if use ~= nil then
+      if type(use) == "table" then
+        use = use.enabled
+      end
+      groups[group] = use or nil
     end
   end
 
-  theme.integrations = final_integrations
+  local hl_groups = {}
+  for group in pairs(groups) do
+    for key, val in pairs(M.get(group, colors, opts)) do
+      hl_groups[key] = val
+    end
+  end
 
-  O, C = _O, _C
-  return theme
+  M.resolve(hl_groups)
+
+  -- override highlights
+  opts.on_highlights(hl_groups, colors)
+
+  return hl_groups, groups
+end
+
+---@param groups mountnugget.Highlights
+---@return mountnugget.Highlights
+function M.resolve(groups)
+  for _, hl in pairs(groups) do
+    if type(hl.style) == "table" then
+      for k, v in pairs(hl.style) do
+        hl[k] = v
+      end
+      hl.style = nil
+    end
+  end
+  return groups
 end
 
 return M
