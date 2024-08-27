@@ -100,7 +100,7 @@ function M.get(c, opts)
     -- Angular ──────────────────────────────────────────────────────────────────────
     ["@keyword.conditional.angular"] = "@keyword.conditional",
     ["@keyword.repeat.angular"] = "@keyword.repeat",
-    ["@punctuation.special.angular"] = "@punctuation.special",
+    ["@punctuation.special.angular"] = "@punctuation.bracket",
     ["@tag.angular"] = "@tag",
     ["@tag.attribute.angular"] = "@tag.attribute",
     ["@tag.delimiter.angular"] = "@tag.delimiter",

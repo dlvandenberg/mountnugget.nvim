@@ -5,10 +5,12 @@ M.plugins = {
   ["gitsigns.nvim"] = "gitsigns",
   ["lazy.nvim"] = "lazy",
   ["telescope.nvim"] = "telescope",
-  ["render-markdown.nvim"] = "markdown",
+  -- ["render-markdown.nvim"] = "markdown",
   ["nvim-tree.lua"] = "nvim-tree",
+  ["nvim-treesitter-context"] = "treesitter-context",
   ["neotest"] = "neotest",
   ["nvim-cmp"] = "cmp",
+  ["noice.nvim"] = "noice",
   ["which-key.nvim"] = "which-key",
 }
 
