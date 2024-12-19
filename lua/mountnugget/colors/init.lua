@@ -39,7 +39,7 @@ function M.setup(opts)
   colors.fg_sidebar = palette.grey_2
   colors.fg_float = colors.fg
 
-  colors.comment = palette.purple_8
+  colors.comment = palette.pink_1
 
   colors.gutter_highlight = palette.pink_2
 

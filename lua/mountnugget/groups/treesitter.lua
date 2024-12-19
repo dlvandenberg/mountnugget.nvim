@@ -105,6 +105,9 @@ function M.get(c, opts)
     ["@tag.attribute.angular"] = "@tag.attribute",
     ["@tag.delimiter.angular"] = "@tag.delimiter",
     ["@variable.angular"] = "@variable",
+
+    -- Dart ──────────────────────────────────────────────────────────────────────
+    ["@variable.parameter.dart"] = "@variable",
   }
 
   for i, color in ipairs(c.rainbow) do

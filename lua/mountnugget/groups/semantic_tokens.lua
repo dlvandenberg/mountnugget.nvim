@@ -47,6 +47,9 @@ function M.get(c)
     ["@lsp.typemod.variable.defaultLibrary"] = "@variable.builtin",
     ["@lsp.typemod.variable.injected"] = "@variable",
     ["@lsp.typemod.variable.static"] = "@constant",
+
+    -- Dart ──────────────────────────────────────────────────────────────────────
+    ["@lsp.type.parameter.dart"] = { fg = c.rose },
   }
 end
 
