@@ -3,7 +3,7 @@
         MountNugget for <a href="https://neovim.io/">Neovim</a>
     </h3>
     <h5>This is the official Neovim Theme for <a href="https://vdberg.dev">my portfolio</a>.</h5>
-    <img src="https://imgur.com/FkTQVE8.png" title="Neovim MountNugget colorscheme" style="width: 100%; max-width: 700px; text-align: center;"/>
+    <img src="https://i.imgur.com/Sslr1YR.jpeg" title="Neovim MountNugget colorscheme" style="width: 100%; max-width: 700px; text-align: center;"/>
 </div>
 
 ## Features
