@@ -12,6 +12,7 @@ M.plugins = {
   ["nvim-cmp"] = "cmp",
   ["noice.nvim"] = "noice",
   ["which-key.nvim"] = "which-key",
+  ["octo.nvim"] = "octo",
 }
 
 ---@param name string
