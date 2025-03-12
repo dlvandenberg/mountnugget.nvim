@@ -87,12 +87,13 @@ describe("group config", function()
   end)
 
   it("loads telescope.nvim", function()
-    local opts =
-      Config.extend({ plugins = {
+    local opts = Config.extend({
+      plugins = {
         all = false,
         auto = false,
         ["telescope.nvim"] = true,
-      } })
+      },
+    })
     local all = {} ---@type table<string, boolean>
 
     for _, name in ipairs(base) do

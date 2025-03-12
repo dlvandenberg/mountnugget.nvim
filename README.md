@@ -3,7 +3,7 @@
         MountNugget for <a href="https://neovim.io/">Neovim</a>
     </h3>
     <h5>This is the official Neovim Theme for <a href="https://vdberg.dev">my portfolio</a>.</h5>
-    <img src="https://i.imgur.com/Sslr1YR.jpeg" title="Neovim MountNugget colorscheme" style="width: 100%; max-width: 700px; text-align: center;"/>
+    <img src="https://i.imgur.com/geaynDX.png" title="Neovim MountNugget colorscheme" style="width: 100%; max-width: 700px; text-align: center;"/>
 </div>
 
 ## Features
@@ -96,11 +96,14 @@ Below is a list of supported integrations.
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
 - [neotest](https://github.com/nvim-neotest/neotest)
 - [noice.nvim](https://github.com/folke/noice.nvim)
 - [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- [octo.nvim](https://github.com/pwntester/octo.nvim)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
 
 ## Extras

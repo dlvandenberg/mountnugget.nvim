@@ -26,12 +26,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y libreadline-dev
+
       - uses: rhysd/action-setup-vim@v1
         with:
           neovim: true
           version: ${{ matrix.nvim-versions }}
 
       - name: run tests
-        run: make test
-        env:
-          PLENARY_DIR: vendor/plenary.nvim
+        run: nvim -l tests/minit.lua --minitest
