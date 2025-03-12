@@ -3,7 +3,7 @@
         MountNugget for <a href="https://neovim.io/">Neovim</a>
     </h3>
     <h5>This is the official Neovim Theme for <a href="https://vdberg.dev">my portfolio</a>.</h5>
-    <img src="https://imgur.com/FkTQVE8.png" title="Neovim MountNugget colorscheme" style="width: 100%; max-width: 700px; text-align: center;"/>
+    <img src="https://i.imgur.com/geaynDX.png" title="Neovim MountNugget colorscheme" style="width: 100%; max-width: 700px; text-align: center;"/>
 </div>
 
 ## Features
@@ -36,37 +36,43 @@ vim.cmd.colorscheme "mountnugget"
 
 ## Configuration
 
+Below you'll find the default configuration, which can be altered to your liking:
+
 ```lua
 require("mountnugget").setup({
-    color_overrides = {},
-    overrides = {},
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        dap = true,
-        telescope = true,
-    }
+  transparent = false,
+  terminal_colors = true,
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true, bold = true },
+    functions = {},
+    variables = {},
+  },
+  on_colors = function(colors) end,
+  on_highlights = function(highlights, colors) end,
+  plugins = {
+    -- enable all plugins when not using lazy.nvim
+    -- set to false to manually enable/disable plugins
+    all = package.loaded.lazy == nil,
+    -- uses lazy.nvim to load plugins automatically
+    auto = true,
+    -- add any plugins here that you want to enable
+  },
 })
-
-vim.cmd.colorscheme "mountnugget"
 ```
 
 ## Overrides
 
-### Palette
+### Color Palette
 
-You can override the palette by providing a table:
+You can override the color palette by using the `on_colors` function:
 
 ```lua
 require("mountnugget").setup({
-    palette_overrides ={
-        purple_10 = "#dd00ff",
-    }
+    on_colors = function(colors)
+        colors.gutter_highlight = "#EE2424"
+    end,
 })
-
-vim.cmd.colorscheme "mountnugget"
 ```
 
 ### Highlight groups
@@ -75,169 +81,46 @@ If you do not like the current color for a specific highlight group, you can ove
 
 ```lua
 require("mountnugget").setup({
-    overrides = {
-        ColorColumn = { fg = "#ff0000", bg = "#0000ff" },
+    on_highlights = function(highlight, colors)
+        ColorColumn = { fg = "#ff0000", bg = colors.bg },
         ["@variable.builtin"] = { fg = "#ff0000" },
-    }
+    end,
 })
-
-vim.cmd.colorscheme "mountnugget"
 ```
 
-## Integrations
+## Supported Plugins
 
 Below is a list of supported integrations.
 
-<table>
-<tr>
-<td><b>Plugin</b></td>
-<td><b>Integration</b></td>
-</tr>
+- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- [neotest](https://github.com/nvim-neotest/neotest)
+- [noice.nvim](https://github.com/folke/noice.nvim)
+- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- [octo.nvim](https://github.com/pwntester/octo.nvim)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [which-key.nvim](https://github.com/folke/which-key.nvim)
 
-<tr>
-<td><a href="https://github.com/akinsho/bufferline.nvim">bufferline.nvim</a></td>
-<td>
-Update your bufferline config:
+## Extras
 
-```lua
-require("bufferline").setup({
-    highlights = require("mountnugget.groups.integrations.bufferline").get()
-})
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/lewis6991/gitsigns.nvim">gitsigns.nvim</a></td>
-<td>
-
-```lua
-gitsigns = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/nvim-lualine/lualine.nvim">lualine.nvim</a></td>
-<td>
-
-```lua
-require("lualine").setup({
-    options = {
-        theme = "mountnugget"
-    }
-})
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://www.markdownguide.org/">markdown</a></td>
-<td>
-
-```lua
-markdown = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/williamboman/mason.nvim">mason.nvim</a></td>
-<td>
-
-```lua
-mason = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/nvim-neotest/neotest">neotest</a></td>
-<td>
-
-```
-neotest = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a></td>
-<td>
-
-```lua
-cmp = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/mfussenegger/nvim-dap">nvim-dap</a></td>
-<td>
-
-```lua
-dap = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/kyazdani42/nvim-tree.lua">nvim-tree.lua</a></td>
-<td>
-
-```lua
-nvimtree = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a></td>
-<td>
-
-```lua
-treesitter = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/nvim-telescope/telescope.nvim">telescope.nvim</a></td>
-<td>
-
-```lua
-telescope = true
-```
-
-</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/folke/which-key.nvim">which-key.nvim</a></td>
-<td>
-
-```lua
-which_key = true
-```
-
-</td>
-</tr>
-</table>
+| Tool                                                        | Extra                                       |
+| ----------------------------------------------------------- | ------------------------------------------- |
+| [Bat](https://github.com/sharkdp/bat)                       | [extras/bat](extras/fzf)                    |
+| [Colorls](https://github.com/athityakumar/colorls)          | [extras/colorls](extras/colorls.yaml)       |
+| [Fzf](https://github.com/junegunn/fzf)                      | [extras/fzf](extras/fzf.sh)                 |
+| [iTerm2](https://iterm2.com/)                               | [extras/iterm2](extras/iterm2.itermcolors)  |
+| [Lazygit](https://github.com/jesseduffield/lazygit)         | [extras/lazygit](extras/lazygit.yml)        |
+| [Oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)  | [extras/oh-my-posh](extras/oh-my-posh.toml) |
+| [WezTerm](https://wezfurlong.org/wezterm/config/files.html) | [extras/wezterm](extras/wezterm.toml)       |
 
 ## Other themes
 
 - [MountNugget.tmux](https://github.com/dlvandenberg/mountnugget.tmux)
-- [MountNugget.terminal](https://github.com/dlvandenberg/mountnugget.terminal)
 
 ## Credits
 
@@ -245,3 +128,4 @@ The setup of this theme is heavily inspired by the following themes:
 
 - [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
 - [Catppuccin](https://github.com/catppuccin/nvim)
+- [TokyoNight](https://github.com/folke/tokyonight.nvim)

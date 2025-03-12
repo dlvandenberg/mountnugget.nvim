@@ -1,31 +1,53 @@
--- ╭─────────────────────────────────────────────────────────╮
--- │ Config                                                  │
--- ╰─────────────────────────────────────────────────────────╯
----@class HighlightDefinition
----@field fg string?
----@field bg string?
+local M = {}
 
----@class MntNgtIntegrations
----@field dap boolean?
----@field dap_ui boolean?
----@field gitsigns boolean?
----@field lazygit boolean?
----@field markdown boolean?
----@field mason boolean?
----@field neotest boolean?
----@field nvimtree boolean?
----@field telescope boolean?
----@field treesitter boolean?
----@field which_key boolean?
-
----@class MountNuggetConfig
----@field overrides table<string, HighlightDefinition>?
----@field palette_overrides table<string, string>?
----@field integrations MntNgtIntegrations?
-local default_config = {
-  overrides = {},
-  palette_overrides = {},
-  integrations = {},
+---@class mountnugget.Config
+---@field transparent? boolean
+---@field terminal_colors? boolean
+---@field styles? table<string, vim.api.keyset.highlight>
+---@field on_colors? fun(colors: ColorScheme)
+---@field on_highlights? fun(highlights: mountnugget.Highlights, colors: ColorScheme)
+---@field plugins? table<string, boolean|{ enabled: boolean }>
+M.defaults = {
+  transparent = false,
+  terminal_colors = true,
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true, bold = true },
+    functions = {},
+    variables = {},
+  },
+  on_colors = function(colors) end,
+  on_highlights = function(highlights, colors) end,
+  plugins = {
+    -- enable all plugins when not using lazy.nvim
+    -- set to false to manually enable/disable plugins
+    all = package.loaded.lazy == nil,
+    -- uses lazy.nvim to load plugins automatically
+    auto = true,
+    -- add any plugins here that you want to enable
+  },
 }
 
-return default_config
+---@type mountnugget.Config
+M.options = nil
+
+---@param options? mountnugget.Config
+function M.setup(options)
+  M.options = vim.tbl_deep_extend("force", {}, M.defaults, options or {})
+end
+
+---@param opts? mountnugget.Config
+---@return mountnugget.Config
+function M.extend(opts)
+  return opts and vim.tbl_deep_extend("force", {}, M.options, opts) or M.options
+end
+
+setmetatable(M, {
+  __index = function(_, key)
+    if key == "options" then
+      return M.defaults
+    end
+  end,
+})
+
+return M
