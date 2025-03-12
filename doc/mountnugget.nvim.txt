@@ -1,4 +1,4 @@
-*mountnugget.nvim.txt*       For Neovim >= 0.8.0      Last change: 2024 May 01
+*mountnugget.nvim.txt*      For Neovim >= 0.8.0     Last change: 2025 March 12
 
 ==============================================================================
 Table of Contents                         *mountnugget.nvim-table-of-contents*
@@ -8,7 +8,8 @@ Table of Contents                         *mountnugget.nvim-table-of-contents*
   - Usage                                             |mountnugget.nvim-usage|
   - Configuration                             |mountnugget.nvim-configuration|
   - Overrides                                     |mountnugget.nvim-overrides|
-  - Integrations                               |mountnugget.nvim-integrations|
+  - Supported Plugins                     |mountnugget.nvim-supported-plugins|
+  - Extras                                           |mountnugget.nvim-extras|
   - Other themes                               |mountnugget.nvim-other-themes|
   - Credits                                         |mountnugget.nvim-credits|
 
@@ -46,39 +47,46 @@ USAGE                                                 *mountnugget.nvim-usage*
 
 CONFIGURATION                                 *mountnugget.nvim-configuration*
 
+Below you’ll find the default configuration, which can be altered to your
+liking:
+
 >lua
     require("mountnugget").setup({
-        color_overrides = {},
-        overrides = {},
-        integrations = {
-            cmp = true,
-            gitsigns = true,
-            nvimtree = true,
-            treesitter = true,
-            dap = true,
-            telescope = true,
-        }
+      transparent = false,
+      terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true, bold = true },
+        functions = {},
+        variables = {},
+      },
+      on_colors = function(colors) end,
+      on_highlights = function(highlights, colors) end,
+      plugins = {
+        -- enable all plugins when not using lazy.nvim
+        -- set to false to manually enable/disable plugins
+        all = package.loaded.lazy == nil,
+        -- uses lazy.nvim to load plugins automatically
+        auto = true,
+        -- add any plugins here that you want to enable
+      },
     })
-    
-    vim.cmd.colorscheme "mountnugget"
 <
 
 
 OVERRIDES                                         *mountnugget.nvim-overrides*
 
 
-PALETTE ~
+COLOR PALETTE ~
 
-You can override the palette by providing a table:
+You can override the color palette by using the `on_colors` function:
 
 >lua
     require("mountnugget").setup({
-        palette_overrides ={
-            purple_10 = "#dd00ff",
-        }
+        on_colors = function(colors)
+            colors.gutter_highlight = "#EE2424"
+        end,
     })
-    
-    vim.cmd.colorscheme "mountnugget"
 <
 
 
@@ -89,81 +97,56 @@ override it in the setup:
 
 >lua
     require("mountnugget").setup({
-        overrides = {
-            ColorColumn = { fg = "#ff0000", bg = "#0000ff" },
+        on_highlights = function(highlight, colors)
+            ColorColumn = { fg = "#ff0000", bg = colors.bg },
             ["@variable.builtin"] = { fg = "#ff0000" },
-        }
+        end,
     })
-    
-    vim.cmd.colorscheme "mountnugget"
 <
 
 
-INTEGRATIONS                                   *mountnugget.nvim-integrations*
+SUPPORTED PLUGINS                         *mountnugget.nvim-supported-plugins*
 
 Below is a list of supported integrations.
 
-PluginIntegrationbufferline.nvimUpdate your bufferline config:
+- bufferline.nvim <https://github.com/akinsho/bufferline.nvim>
+- nvim-cmp <https://github.com/hrsh7th/nvim-cmp>
+- gitsigns.nvim <https://github.com/lewis6991/gitsigns.nvim>
+- lazy.nvim <https://github.com/folke/lazy.nvim>
+- render-markdown.nvim <https://github.com/MeanderingProgrammer/render-markdown.nvim>
+- neotest <https://github.com/nvim-neotest/neotest>
+- noice.nvim <https://github.com/folke/noice.nvim>
+- nvim-tree.lua <https://github.com/kyazdani42/nvim-tree.lua>
+- octo.nvim <https://github.com/pwntester/octo.nvim>
+- telescope.nvim <https://github.com/nvim-telescope/telescope.nvim>
+- nvim-treesitter-context <https://github.com/nvim-treesitter/nvim-treesitter-context>
+- nvim-treesitter <https://github.com/nvim-treesitter/nvim-treesitter>
+- which-key.nvim <https://github.com/folke/which-key.nvim>
 
->lua
-    require("bufferline").setup({
-        highlights = require("mountnugget.groups.integrations.bufferline").get()
-    })
-<
 
-gitsigns.nvim>lua
-    gitsigns = true
-<
+EXTRAS                                               *mountnugget.nvim-extras*
 
-lualine.nvim>lua
-    require("lualine").setup({
-        options = {
-            theme = "mountnugget"
-        }
-    })
-<
+  -----------------------------------------------------------------------
+  Tool                                      Extra
+  ----------------------------------------- -----------------------------
+  Bat                                       extras/bat
 
-markdown>lua
-    markdown = true
-<
+  Colorls                                   extras/colorls
 
-mason.nvim>lua
-    mason = true
-<
+  Fzf                                       extras/fzf
 
-neotest>
-    neotest = true
-<
+  iTerm2                                    extras/iterm2
 
-nvim-cmp>lua
-    cmp = true
-<
+  Lazygit                                   extras/lazygit
 
-nvim-dap>lua
-    dap = true
-<
+  Oh-my-posh                                extras/oh-my-posh
 
-nvim-tree.lua>lua
-    nvimtree = true
-<
-
-nvim-treesitter>lua
-    treesitter = true
-<
-
-telescope.nvim>lua
-    telescope = true
-<
-
-which-key.nvim>lua
-    which_key = true
-<
-
+  WezTerm                                   extras/wezterm
+  -----------------------------------------------------------------------
 
 OTHER THEMES                                   *mountnugget.nvim-other-themes*
 
 - MountNugget.tmux <https://github.com/dlvandenberg/mountnugget.tmux>
-- MountNugget.terminal <https://github.com/dlvandenberg/mountnugget.terminal>
 
 
 CREDITS                                             *mountnugget.nvim-credits*
@@ -172,6 +155,7 @@ The setup of this theme is heavily inspired by the following themes:
 
 - Gruvbox <https://github.com/ellisonleao/gruvbox.nvim>
 - Catppuccin <https://github.com/catppuccin/nvim>
+- TokyoNight <https://github.com/folke/tokyonight.nvim>
 
 Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
 
